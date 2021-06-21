@@ -1,0 +1,16 @@
+<h1>Slider</h1>
+<div class="slider-container">
+
+        <img style="width: 500px; height: 300px;" [src]='imgArray[i]' alt="porsche">
+    
+    <button (click)="onLeft()" style="position: absolute; left: 0; top: 50%;">&#10094;</button>
+    <button (click)="onRight()" style="position: absolute; right: 0; top: 50%;">&#10095;</button>
+    
+    <div class="dot-container">
+        <div (click)="firstImg()" class="dot"></div>
+        <div (click)="secondImg()" class="dot"></div>
+        <div (click)="thirdImg()" class="dot"></div>
+        <div (click)="fourthImg()" class="dot"></div>
+    </div>
+
+</div>

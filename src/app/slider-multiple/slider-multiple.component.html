@@ -1,0 +1,10 @@
+<h1>Slider Multiple Images</h1>
+<div class="slider-container">
+
+        <img [class.ani]="rightClicked" style="width: 500px; height: 300px;" [src]='imgArray[i]' alt="porsche">
+        <img [class.ani2]='rightClicked' style="width: 500px; height: 300px;" [src]='imgArray[i+1]' alt="porsche">
+    
+    <button [disabled]='i == 0' (click)="onLeft()" style="position: absolute; left: 0; top: 50%; cursor: pointer;">&#10094;</button>
+    <button [disabled]='i == length - 2' (click)="onRight()" style="position: absolute; right: 0; top: 50%; cursor: pointer;    ">&#10095;</button>
+
+</div>
