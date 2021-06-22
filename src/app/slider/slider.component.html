@@ -1,16 +1,19 @@
 <h1>Slider</h1>
-<div class="slider-container">
+<div id="sliders" class="slider-container">
 
-        <img style="width: 500px; height: 300px;" [src]='imgArray[i]' alt="porsche">
+        <div #slide id='slide' class="slide">
+            <div  style="display: flex;" *ngFor='let image of imgArray'>
+                <img style="width: 500px; height: 300px;" [src]='image.source' alt="porsche">
+            </div>
+        </div>
     
-    <button (click)="onLeft()" style="position: absolute; left: 0; top: 50%;">&#10094;</button>
-    <button (click)="onRight()" style="position: absolute; right: 0; top: 50%;">&#10095;</button>
+    <button (click)="onLeft()" style="position: absolute; left: 0; top: 50%; cursor: pointer;">&#10094;</button>
+    <button (click)="onRight()" style="position: absolute; right: 0; top: 50%; cursor: pointer;">&#10095;</button>
     
     <div class="dot-container">
-        <div (click)="firstImg()" class="dot"></div>
-        <div (click)="secondImg()" class="dot"></div>
-        <div (click)="thirdImg()" class="dot"></div>
-        <div (click)="fourthImg()" class="dot"></div>
+        <div (click)="dotScroll(i)" class="dot" *ngFor='let dot of imgArray; let i = index'></div>
     </div>
 
 </div>
+
+<!-- <img [class.ani]='rightClicked' [class.ani2]='leftClicked' style="width: 500px; height: 300px;" [src]='imgArray[i]' alt="porsche"> -->

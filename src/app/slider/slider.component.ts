@@ -1,67 +1,55 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'slider',
-  templateUrl: './slider.component.html',
-  styleUrls: ['./slider.component.css']
+    selector: 'slider',
+    templateUrl: './slider.component.html',
+    styleUrls: ['./slider.component.css']
 })
-export class SliderComponent implements OnInit {
 
-    imgArray: String[];
+export class SliderComponent implements OnInit {
+    imgArray: any[];
     i: number;
     length: number;
-  constructor() 
-  { 
-      this.imgArray = [];
-      this.i = 0;
-      this.length = 0;
+    rightClicked: boolean;
+    leftClicked: boolean;
+    constructor() {
+        this.imgArray = [];
+        this.i = 0;
+        this.length = 0;
+        this.rightClicked = false;
+        this.leftClicked = false;
     }
-    
-    ngOnInit(): void 
-    {
+
+    ngOnInit(): void {
         this.imgArray = [
-            "assets/Images/1.jpg", "assets/Images/2.jpg", "assets/Images/3.jpg", "assets/Images/4.jpg"
+            { "source": "assets/Images/1.jpg" },
+            { "source": "assets/Images/2.jpg" },
+            { "source": "assets/Images/3.jpg" },
+            { "source": "assets/Images/4.jpg" }
         ]
         this.length = this.imgArray.length;
-  }
+    }
 
-  onRight()
-  {
-      if ( this.i == this.length - 1 )
-      {
-          this.i = 0;
-      }
-      else
-      this.i++;
-  }
+    onRight() {
+        const sli = document.getElementById('slide');
+        if (sli) sli.scrollLeft += 500;
+        console.log('Clicked Right');
 
-  onLeft()
-  {
-    if ( this.i == 0 )
-       {
-          this.i = this.length - 1; 
-       }
-    else
-      this.i--;
-  }
+    }
 
-  firstImg()
-  {
-      this.i = 0;
-  }
 
-  secondImg()
-  {
-      this.i = 1;
-  }
-  
-  thirdImg()
-  {
-      this.i = 2;
-  }
+    onLeft() {
+        const sli = document.getElementById('slide');
+        if (sli) sli.scrollLeft -= 500;
+        console.log('Clicked Left');
+    }
 
-  fourthImg()
-  {
-      this.i = 3;
-  }
+    dotScroll(i: number) 
+    {
+        const sli = document.getElementById('slide');
+        if (sli) 
+        {
+            sli.scrollLeft = i * 500;
+        }
+    }
 }
